@@ -96,10 +96,3 @@ title: 刑法犯罪構成要件アーカイブ
     {% endif %}
 </section>
 {% endfor %}
-
----
-[Image of the structure of a criminal offense in Japanese law]
----
-<footer>
-    <p>参照: <a href="https://ja.wikipedia.org/wiki/%E6%AE%BA%E4%BA%BA%E7%BD%AA_(%E6%97%A5%E6%9C%AC)" target="_blank">Wikipedia 殺人罪 (日本)</a></p>
-</footer>
