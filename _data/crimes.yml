@@ -14,7 +14,12 @@
   completed: "相手が死亡した時点"
   attempt: "規定あり（203条）"
   preparation: "規定あり（201条）"
-  source_url: "https://ja.wikipedia.org/wiki/%E6%AE%BA%E4%BA%BA%E7%BD%AA_(%E6%97%A5%E6%9C%AC)"- id: suicide_assisted
+  source_url: "https://ja.wikipedia.org/wiki/%E6%AE%BA%E4%BA%BA%E7%BD%AA_(%E6%97%A5%E6%9C%AC)"
+  points:
+    - "人の始期（一部露出説：通説・判例）"
+    - "人の終期（三兆候説と脳死説の対立）"
+
+- id: suicide_assisted
   category_main: "個人的法益"
   category_sub: "生命・身体"
   chapter: "26"
