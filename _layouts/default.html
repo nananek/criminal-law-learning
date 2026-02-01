@@ -12,92 +12,77 @@
             --link-color: #3366cc; 
             --border-color: #a2a9b1; 
         }
+        
+        body { font-family: sans-serif; margin: 0; display: flex; background-color: #ffffff; color: #202122; }
 
-        body { 
-            font-family: sans-serif; 
-            margin: 0; 
-            display: flex; 
-            flex-direction: column; /* スマホ向けデフォルト */
-            background-color: #ffffff; 
-            color: #202122; 
-        }
-
-        /* PC向けレイアウト調整 */
-        @media (min-width: 768px) {
-            body { flex-direction: row; }
-            aside { 
-                width: var(--sidebar-width); 
-                height: 100vh; 
-                position: fixed; 
-                border-right: 1px solid var(--border-color);
-                border-bottom: none;
-            }
-            main { margin-left: var(--sidebar-width); }
-        }
-
-        /* サイドバー */
+        /* サイドバーの設定 */
         aside { 
+            width: var(--sidebar-width); 
             background-color: #f6f6f6; 
-            border-bottom: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color); 
+            height: 100vh; 
+            position: fixed; 
+            overflow-y: auto; 
             padding: 20px 15px; 
             box-sizing: border-box; 
-            font-size: 0.9rem; 
+            font-size: 0.85rem; 
         }
-
-        aside h2 { 
-            font-size: 1rem; 
-            border-bottom: 2px solid var(--primary-blue); 
-            padding-bottom: 5px; 
-            margin-top: 10px; 
-        }
-
-        .nav-group-title { font-weight: bold; color: #54595d; display: block; margin: 10px 0 5px 5px; background: #eee; padding: 2px 5px; }
-        .nav-list { list-style: none; padding-left: 10px; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; } /* スマホでは横並び気味に */
         
-        @media (min-width: 768px) {
-            .nav-list { display: block; }
-            .nav-list li { margin-bottom: 6px; }
-        }
+        aside h2 { font-size: 1rem; border-bottom: 2px solid var(--primary-blue); padding-bottom: 5px; margin-top: 25px; }
+        .nav-group-title { font-weight: bold; color: #54595d; display: block; margin: 10px 0 5px 5px; background: #eee; padding: 2px 5px; }
+        .nav-list { list-style: none; padding-left: 10px; margin: 0; }
+        .nav-list a { text-decoration: none; color: var(--link-color); }
 
-        .nav-list a { text-decoration: none; color: var(--link-color); font-weight: bold; }
-
-        /* メインコンテンツ */
+        /* メインコンテンツの設定 */
         main { 
+            margin-left: var(--sidebar-width); 
             flex: 1; 
-            padding: 20px; 
+            padding: 40px; 
             max-width: 100%; 
-            box-sizing: border-box;
+            box-sizing: border-box; 
+            overflow-x: hidden; /* メインごと突き抜けるのを防ぐ */
         }
 
-        @media (min-width: 768px) {
-            main { padding: 40px 60px; max-width: 900px; }
-        }
-
-        .page-header h1 { font-size: 1.6rem; }
-        .page-header { border-bottom: 1px solid var(--border-color); margin-bottom: 20px; }
+        .page-header { border-bottom: 1px solid var(--border-color); margin-bottom: 30px; }
         .breadcrumb { font-size: 0.8rem; color: #54595d; margin-bottom: 10px; }
 
-        /* テーブルのレスポンシブ化 */
+        /* テーブルのはみ出し防止設定 */
         .table-wrapper {
             width: 100%;
-            overflow-x: auto; /* 横幅が狭い時にスクロール可能に */
+            overflow-x: auto; /* 横スクロールを許可 */
             -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
         }
 
         .spec-table { 
             width: 100%; 
+            min-width: 400px; /* あまりに潰れすぎないように最低幅を設定 */
             border-collapse: collapse; 
-            margin: 15px 0; 
-            border: 1px solid var(--border-color); 
-            min-width: 400px; /* テーブルが潰れすぎないように */
+            border: none; /* 外枠はwrapperに任せる */
         }
-
-        .spec-table th { background-color: var(--section-bg); width: 35%; text-align: left; padding: 10px; border: 1px solid var(--border-color); font-size: 0.9rem; }
-        .spec-table td { padding: 10px; border: 1px solid var(--border-color); font-size: 0.9rem; }
+        
+        .spec-table th { background-color: var(--section-bg); width: 30%; text-align: left; padding: 12px; border: 1px solid var(--border-color); font-size: 0.9rem; }
+        .spec-table td { padding: 12px; border: 1px solid var(--border-color); font-size: 0.9rem; }
         
         .status-tag { display: inline-block; background: #e1f5fe; color: #0288d1; padding: 2px 8px; border-radius: 3px; font-size: 0.75rem; font-weight: bold; }
-        
-        footer { margin-top: 40px; font-size: 0.8rem; color: #72777d; border-top: 1px solid var(--border-color); padding-top: 20px; }
+        footer { margin-top: 50px; font-size: 0.8rem; color: #72777d; border-top: 1px solid var(--border-color); padding-top: 20px; }
+
+        /* レスポンシブ対応（スマホ表示） */
+        @media screen and (max-width: 768px) {
+            body { display: block; } /* 横並びを解除 */
+            aside { 
+                position: relative; 
+                width: 100%; 
+                height: auto; 
+                border-right: none; 
+                border-bottom: 1px solid var(--border-color); 
+            }
+            main { 
+                margin-left: 0; 
+                padding: 20px; 
+            }
+        }
     </style>
 </head>
 <body>
@@ -113,7 +98,7 @@
     </div>
 </aside>
 <main>
-    {{ content | replace: '<table class="spec-table">', '<div class="table-wrapper"><table class="spec-table">' | replace: '</table>', '</table></div>' }}
+    {{ content }}
 </main>
 </body>
 </html>
